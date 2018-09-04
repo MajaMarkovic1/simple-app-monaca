@@ -1,7 +1,8 @@
 <template>
   <v-ons-navigator 
   :page-stack="pageStack"
-  @push-page="pushPage">
+  @push-page="pushPage"
+  :options="options">
   </v-ons-navigator>
 </template>
 

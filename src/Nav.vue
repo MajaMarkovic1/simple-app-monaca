@@ -13,6 +13,7 @@
         <v-ons-list-header>Naslov liste</v-ons-list-header>
         <v-ons-list-item>Prvi</v-ons-list-item>
       </v-ons-list>
+      
       <v-ons-button @click="goHome">Go Home</v-ons-button>
     </div>
   </v-ons-page>
@@ -22,16 +23,26 @@
 import Home from './Home'
 
 export default {
-  methods: {
-      goHome(){
-          this.$emit('push-page', {
-              ...Home,
-              props: {
-                  name: 'Maja'
-              }
-          })
-      }
-  }
+    data(){
+        return {
+            message: ''
+        }
+    },
+    methods: {
+        goHome(){
+            this.$emit('push-page', {
+                extends: Home,
+                props: {
+                    name: 'Maja',
+                    passDataBack(data){
+                        
+                        this.message = data
+                        console.log(this.message)
+                    }
+                }
+            })
+        }
+    }
 }
 </script>
 
